@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Prismic from '@prismicio/client'
 import Loader from './loader';
 import Intro from './intro';
 import Trans from './transition';
@@ -8,10 +9,28 @@ import Footer from './footer';
 const Story = () => {
     const [offsetY, setOffsetY] = useState(0);
     const [chapter, setChapter] = useState(0);
+    const [chapterImages, setChapterImages] = useState(null);
     
-    useEffect(()=> {
-      setTimeout(() => setChapter(1), 5000)
-    },[])
+    const apiEndpoint = process.env.REACT_APP_PRISMIC_API_ENDPOINT
+    const accessToken = process.env.REACT_APP_PRISMIC_ACCESS_TOKEN
+  
+    const Client = Prismic.client(apiEndpoint, { accessToken });
+  
+    useEffect(() => {
+    const fetchData = async () => {
+        const book = await Client.query( Prismic.Predicates.at('document.type', 'train'));
+        if (book) {
+          let images = book.results[0].data;
+          setChapterImages({
+            time: images.timestamp.url,
+        });
+          setTimeout(() => {
+            setChapter(1);}, 5000);
+        }
+      }
+      fetchData();
+    }, []);
+
     return(
         <>
         { (chapter === 0) && (
@@ -22,7 +41,9 @@ const Story = () => {
           <Intro
             offsetY={offsetY}
             setOffsetY={setOffsetY}
-            setChapter={setChapter}/>
+            setChapter={setChapter}
+            chapterImages={chapterImages}
+            />
           )
         }
 
@@ -38,7 +59,8 @@ const Story = () => {
           <PartOne 
             offsetY={offsetY}
             setOffsetY={setOffsetY}
-            setChapter={setChapter}/>
+            setChapter={setChapter}
+            chapterImages={chapterImages}/>
           )
         }
         
