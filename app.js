@@ -1,9 +1,10 @@
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-const uui = require('uuid');
+const { v4: uuid } = require('uuid');
 require('dotenv').config();
+const stripeKey = process.env.STRIPE_SECRET_KEY;
+const stripe = require('stripe')(stripeKey);
 //uncomment for production build
 //const path = require('path');
 
@@ -26,32 +27,35 @@ app.use(cors());
 app.get('/', (req, res)=> {
     res.send("works!")
 })
-app.post("/create-checkout-session", async (req, res) => {
-    try {
-        const { book } = req.body;
-        const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        mode: "payment",
-        line_items: [
-            {
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                    name: book.name,
-                    },
-                    unit_amount: book.price,
-                },
-                quantity: book.quantity,
-            }
-            ],
-        success_url: `${process.env.SERVER_URL}/`,
-        cancel_url: `${process.env.SERVER_URL}/`,
-        })
-        res.json({ url: session.url })
-    } catch (e) {
-        res.status(500).json({ error: e.message })
-    }
-});
+
+app.post("/pay", cors(), async (req, res) => {
+    const orderId = uuid();
+	let { book, id } = req.body
+	try {
+		const payment = await stripe.paymentIntents.create({
+			amount: book.price,
+			currency: "USD",
+			description: book.name,
+			payment_method: id,
+			confirm: true,
+            metadata: {
+                order_id: orderId,
+              },
+		})
+		console.log("Payment", payment)
+		res.json({
+            orderId: payment.metadata.order_id,
+			message: "Payment successful",
+			success: true
+		})
+	} catch (error) {
+		console.log("Error", error)
+		res.json({
+			message: "Payment failed",
+			success: false
+		})
+	}
+})
 
 //listen on port
 const Port = process.env.PORT || 3001;
