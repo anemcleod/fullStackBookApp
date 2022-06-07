@@ -19,7 +19,7 @@ const PaymentSuccess = () => {
                     <p>press this button to start download</p>
                     <div className="spacer">
                       <Link to="/">
-                        <button class="back__button">
+                        <button className="back__button">
                           go back <span>to the beginning</span>
                         </button>
                       </Link> 

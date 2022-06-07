@@ -43,7 +43,7 @@
     font-size: 12px;
 }
 
-.buy__button, .back__button, .close-payment {
+.buy__button, .back__button {
     font-family: Alata, sans-serif;
     font-size: 20px;
     border: none;
@@ -124,7 +124,8 @@
     margin-top: -8px;
 }
 
-.buy__button:hover, .back__button:hover, .social-btn:hover {
+.buy__button:hover, .back__button:hover, .social-btn:hover, 
+.pay-btn:hover, .close-btn:hover {
     color:rgb(43, 74, 72);
 }
 
@@ -146,16 +147,66 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
+    max-width: 500px;
 }
 
-.close-payment {
+.pay-btn, .close-btn {
+    font-family: Alata, sans-serif;
     background-color: rgb(178, 51, 31);
+    color: white;
     border-radius: 10px;
     padding: 8px 20px;
     max-height: 55px;
     border: none;
+    margin: 0 15px 20px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
 
 }
+
+.close-btn {
+  width: 100%;
+  max-width: 470px;
+}
+
+.payment-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group {
+	margin: 0 15px 20px;
+	padding: 0;
+	border-style: none;
+	background-color: rgb(204, 221, 217);;
+	will-change: opacity, transform;
+	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgb(204, 221, 217);;
+	border-radius: 4px;
+}
+
+.form-row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	margin-left: 15px;
+	border-top: 1px solid rgb(204, 221, 217);;
+}
+
+.StripeElement--webkit-autofill {
+	background: transparent !important;
+}
+
+.StripeElement {
+	width: 100%;
+	padding: 11px 15px 11px 0;
+}
+
 
 /*=============================media queries =========================*/
 

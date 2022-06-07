@@ -10,17 +10,18 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fab);
 
+
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Switch>
-            <Route exact path="/" component={Story}/>
-            <Route exact path="/terms_and_conditions" component={Legal}/>
-            <Route exact path="/payment_success" component={PaymentSuccess}/>
-            <Route exact path="/payment_failure" component={PaymentFailure}/>
-          </Switch>
-      </div>
+        <div className="App">
+          <Switch>
+              <Route exact path="/" component={Story}/>
+              <Route exact path="/terms_and_conditions" component={Legal}/>
+              <Route exact path="/payment_success" component={PaymentSuccess}/>
+              <Route exact path="/payment_failure" component={PaymentFailure}/>
+            </Switch>
+        </div>
     </Router>
   );
 }

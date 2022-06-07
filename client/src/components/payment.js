@@ -1,14 +1,20 @@
 import React from 'react';
 import "../assets/stylesheets/footer.css";
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import PaymentForm from './subPages/subPageComponents/paymentForm';
 
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 const PaymentPortal = ({togglePayment}) => {
     return (
         <div className="payment-container">
-            <div className="payment-form-container">
-                <h2>Sorry, just a demo</h2>
-
+            <div className="payment-form-container">  
+                <Elements stripe={stripePromise}>
+                    <PaymentForm />
+                </Elements> 
                 <button 
-                    className="close-payment" 
+                    className="close-btn" 
                     onClick={togglePayment}>
                     close
                 </button>
