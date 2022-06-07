@@ -30,12 +30,12 @@ const Intro = ({setOffsetY, offsetY, setChapter, chapterImages}) => {
             <div className="intro-image-container">
                 <Trainmation trainScale={trainScale}></Trainmation>
                 {
-                    chapterImages ? (
+                    chapterImages && (
                         <img 
                             className="timestamp" 
                             src={chapterImages.time} 
                             alt="2am timestamp"/>
-                    ) : null
+                    )
                 }
  
             </div>

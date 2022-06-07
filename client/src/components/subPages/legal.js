@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../assets/stylesheets/legal.css';
-import HalongBay from './svg/halongBay';
+import '../../assets/stylesheets/legal.css';
+import HalongBay from '../svg/halongBay';
  
 const Legal = () => {
 
