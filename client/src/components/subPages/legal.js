@@ -12,7 +12,7 @@ const Legal = () => {
           </div> 
             <div className="legal-content-container">
                 <div className="legal-content">
-                    <h1>Terms and conditions</h1>
+                    <h2>Terms and conditions</h2>
                     
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse elementum pretium condimentum. Maecenas sit amet efficitur nulla, sit amet iaculis orci. Donec iaculis sed odio eget viverra. Sed id nisi eu massa facilisis iaculis. Quisque posuere, velit ut dapibus finibus, nulla sem ultricies dui, non vestibulum urna tellus vel augue. Integer tincidunt sagittis tortor in venenatis. Ut fermentum turpis eu nisi mollis, eu porttitor dui ultrices. Nullam bibendum, tellus sed elementum mattis, arcu velit pulvinar diam, ut varius ex felis non tortor. Ut bibendum molestie commodo. Quisque sed nulla molestie, sollicitudin mauris ut, venenatis tortor. In eu neque egestas, sodales lorem in, maximus ligula. Vivamus rutrum maximus dolor cursus laoreet. Fusce elit nibh, pretium eu lacinia at, pulvinar eu nibh. </p>
                     

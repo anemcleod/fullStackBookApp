@@ -32,17 +32,32 @@ const PaymentForm = (props) => {
                 if(response) {
                     if(response.data.success){
                         props.history.push({
-                            pathname: "/payment_success",
-                            state: { orderId: response.data.orderId}
-                        })
+                            pathname: "/payment",
+                            state: {
+                                success: true, 
+                                orderId: response.data.orderId
+                            }
+                        });
                     }else{
-                        props.history.push("/payment_failure")
+                        props.history.push({
+                            pathname: "/payment",
+                            state: {
+                                success: false, 
+                                orderId: null
+                            }
+                        });
                     }
                 }
 
             } catch (error) {
                 console.log("Error", error);
-                props.history.push("/payment_failure")
+                props.history.push({
+                    pathname: "/payment",
+                    state: {
+                        success: false, 
+                        orderId: null
+                    }
+                });
             }
         } else {
             console.log(error.message)
