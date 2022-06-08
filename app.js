@@ -42,16 +42,15 @@ app.post("/pay", cors(), async (req, res) => {
                 order_id: orderId,
               },
 		})
-		console.log("Payment", payment)
 		res.json({
             orderId: payment.metadata.order_id,
 			message: "Payment successful",
 			success: true
 		})
 	} catch (error) {
-		console.log("Error", error)
 		res.json({
 			message: "Payment failed",
+			error: error,
 			success: false
 		})
 	}
