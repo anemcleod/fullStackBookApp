@@ -24,8 +24,11 @@ app.use(cors());
   //   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
   // });
 
-app.get('/', (req, res)=> {
-    res.send("works!")
+app.get("/51L7ja5EWPvGSy4vgSyOFq0fabzJSVvCG9kZyIPPuaFyHy", (req, res)=> {
+	const file = "/downloadable/book_title.pdf";
+    	res.download(__dirname + file, function(error){
+			console.log("Error : ", error)
+		});
 })
 
 app.post("/pay", cors(), async (req, res) => {
@@ -42,11 +45,16 @@ app.post("/pay", cors(), async (req, res) => {
                 order_id: orderId,
               },
 		})
+		const file = "/downloadable/book_title.pdf";
+    	res.download(__dirname+file, function(error){
+			console.log("Error : ", error)
+		});
 		res.json({
             orderId: payment.metadata.order_id,
 			message: "Payment successful",
 			success: true
-		})
+		});
+		
 	} catch (error) {
 		res.json({
 			message: "Payment failed",
