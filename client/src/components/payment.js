@@ -9,7 +9,8 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 const PaymentPortal = ({togglePayment}) => {
     return (
         <div className="payment-container">
-            <div className="payment-form-container">  
+            <div className="payment-form-container"> 
+                <h2>Purchase 'Book Title'</h2> 
                 <Elements stripe={stripePromise}>
                     <PaymentForm />
                 </Elements> 
