@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef} from 'react';
-
+import { RichText } from 'prismic-reactjs'
 import "../assets/stylesheets/intro.css";
 import Trainmation from "./svg/trainmation";
 
-const Intro = ({setOffsetY, offsetY, setChapter, chapterImages}) => {
+const Intro = ({setOffsetY, offsetY, setChapter, chapterData}) => {
     
     const [trainScale, setTrainScale] = useState(0); 
   
@@ -30,10 +30,10 @@ const Intro = ({setOffsetY, offsetY, setChapter, chapterImages}) => {
             <div className="intro-image-container">
                 <Trainmation trainScale={trainScale}></Trainmation>
                 {
-                    chapterImages && (
+                    chapterData && (
                         <img 
                             className="timestamp" 
-                            src={chapterImages.time} 
+                            src={chapterData.time} 
                             alt="2am timestamp"/>
                     )
                 }
@@ -42,17 +42,12 @@ const Intro = ({setOffsetY, offsetY, setChapter, chapterImages}) => {
 
             <div className="intro-content-container">
                 <div className="intro-column-container">
-                    <h1 className="intro-title">Hanoi</h1>
-
-                    <h2 className="intro-subtitle">present day</h2> 
-
-                    <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
+                    <h1 className="intro-title">{RichText.asText(chapterData.heading)}</h1>
+                    <h2 className="intro-subtitle">{RichText.asText(chapterData.subheading)}</h2> 
+                    {RichText.render(chapterData.section1)}    
                 </div>
-
                 <div className="intro-column-container">
-                    <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
-                    
-                    <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
+                    {RichText.render(chapterData.section2)}   
                 </div>
             </div>
         </div>

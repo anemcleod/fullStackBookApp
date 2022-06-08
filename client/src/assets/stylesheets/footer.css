@@ -166,6 +166,10 @@
 
 }
 
+.payment-load svg {
+    height: 150px;
+    width: 200px;
+}
 .close-btn {
   width: 100%;
   max-width: 470px;

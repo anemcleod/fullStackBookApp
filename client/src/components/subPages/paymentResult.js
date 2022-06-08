@@ -6,7 +6,6 @@ import PaymentSuccess from './subPageComponents/paymentSuccess';
 import PaymentFailure from './subPageComponents/paymentFailure';
  
 const PaymentResult = (props) => {
-   /* props.location.state.orderId props.location.state.success*/
     return (
       <div className="payment-result-container">
           <div className="payment-result-background">
@@ -15,8 +14,8 @@ const PaymentResult = (props) => {
             <div className="payment-result-content-container">
                 <div className="payment-result-content">
                    {
-                      true ? 
-                      <PaymentSuccess orderId="tqeq555K899802ejhbcdd"/> :
+                      props.location.state.success ? 
+                      <PaymentSuccess orderId={props.location.state.orderId}/> :
                       <PaymentFailure/>
                    }
                     <div>

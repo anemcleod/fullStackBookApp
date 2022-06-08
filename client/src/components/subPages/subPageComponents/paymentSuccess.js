@@ -29,7 +29,7 @@ const PaymentSuccess = ({orderId}) => {
         <p>or press this button to start your download</p>
       </div>
       <button onClick={handleDownload} className="download-btn">
-            download
+        download
       </button>
     </>
   )

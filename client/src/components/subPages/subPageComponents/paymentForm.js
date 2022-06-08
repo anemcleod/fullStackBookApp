@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom';
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import CARD_OPTIONS from './paymentHelpers/cardOptions'
+import TurnPage from '../../svg/turnPage';
 
 const PaymentForm = (props) => {
+
+    const [isLoading, setIsLoading] = useState(false);    
     //stripe
     const stripe = useStripe()
     const elements = useElements()
 
     //on submit attempt stripe payment
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        setIsLoading(true);
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement)
@@ -47,6 +51,7 @@ const PaymentForm = (props) => {
                             }
                         });
                     }
+                    setIsLoading(false);
                 }
 
             } catch (error) {
@@ -58,23 +63,24 @@ const PaymentForm = (props) => {
                         orderId: null
                     }
                 });
+                setIsLoading(false);
             }
-        } else {
-            console.log(error.message)
         }
     }
 
     return (
-        <form onSubmit={handleSubmit} className="payment-form">
-            <fieldset className="form-group">
-                <div className="form-row">
-                    <CardElement options={CARD_OPTIONS}/>
-                </div>
-            </fieldset>
-            <button className="pay-btn">
-                Pay $2.99
-            </button>
-        </form>
+        isLoading ? <div className="payment-load"><TurnPage /></div> : (
+            <form onSubmit={handleSubmit} className="payment-form">
+                <fieldset className="form-group">
+                    <div className="form-row">
+                        <CardElement options={CARD_OPTIONS}/>
+                    </div>
+                </fieldset>
+                <button className="pay-btn">
+                    Pay $2.99
+                </button>
+            </form>
+        )
     )
 }
 

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
+import { RichText } from 'prismic-reactjs'
 import "../assets/stylesheets/transition.css"
 
-const Trans = ({setOffsetY, setChapter}) => {
+const Trans = ({setOffsetY, setChapter, chapterData}) => {
     const [showTitle, setShowTitle] = useState(false);
     const [showSubTitle, setShowSubTitle] = useState(false);
     
@@ -23,13 +24,13 @@ const Trans = ({setOffsetY, setChapter}) => {
         <div className="trans-content">
             <div 
                 className={showTitle ?"trans-title reveal-trans-titles" :"trans-title" }>
-                but this story is about the moment it began
+                {RichText.asText(chapterData.heading)}
             </div>
 
             <div>
                 <div 
                     className={showSubTitle ?"trans-subtitle reveal-trans-titles" :"trans-subtitle" }>
-                    provocative line...
+                    {RichText.asText(chapterData.teaser)}
                 </div>
             </div>
         </div>

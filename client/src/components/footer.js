@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import { RichText } from 'prismic-reactjs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "../assets/stylesheets/footer.css";
 
 import PaymentPortal from './payment';
 
-const Footer = ({setOffsetY, setChapter}) => {
+const Footer = ({setOffsetY, setChapter, chapterData}) => {
     window.scrollTo(0, 0);
     const [showPayment, setShowPayment] = useState(false);
 
@@ -27,7 +28,7 @@ const Footer = ({setOffsetY, setChapter}) => {
             </div>
 
             <div className="cta-purchase">
-                <p>purchase the book<span>$2.99</span></p>
+                <p>purchase the book<span>${chapterData.price}</span></p>
 
                 <button 
                     className="buy__button" 
@@ -55,12 +56,12 @@ const Footer = ({setOffsetY, setChapter}) => {
             <div className="contributors">
                 <div className="contributor">
                     <h4>Copyright</h4>
-                    <p>Author Name 2020</p>
+                    <p>{RichText.asText(chapterData.author)} 2020</p>
                 </div>
 
                 <div className="contributor">
                     <h4>Design</h4>
-                    <p>Ane Mcleod</p>
+                    <p>{RichText.asText(chapterData.designer)}</p>
                 </div>
             </div>
 

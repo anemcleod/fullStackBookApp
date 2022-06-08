@@ -1,12 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react';
-
+import { RichText } from 'prismic-reactjs'
 import HalongBay from './svg/halongBay';
 import MountainRight from './svg/mountainRight'
 import MountainLeft from './svg/mountainLeft'
 
 import '../assets/stylesheets/partone.css';
 
-const PartOne = ({setOffsetY, offsetY, setChapter}) => {
+const PartOne = ({setOffsetY, offsetY, setChapter, chapterData}) => {
 
     const handleScrollpo = () => setOffsetY(window.pageYOffset);
     const [zoom, setZoom] = useState(1);
@@ -65,12 +65,12 @@ const PartOne = ({setOffsetY, offsetY, setChapter}) => {
                 <div className="partone__title">
                     <div 
                         className={reveal.current ? "partone_main_title reveal-text" : "partone_main_title"}>
-                        part one
+                        {RichText.asText(chapterData.title)}
                     </div>
 
                     <div 
                         className={reveal.current ? "partone_sub_title reveal-text": "partone_sub_title"}>
-                        Rogue Pants in Halong Bay
+                        {RichText.asText(chapterData.subtitle)}
                     </div>
                 </div>
 
@@ -110,17 +110,12 @@ const PartOne = ({setOffsetY, offsetY, setChapter}) => {
                 <div 
                     className="partone-content-container">
                     <div className="partone-column-container">
-                        <h1 className="partone-title">Ha Long Bay</h1> 
-
-                        <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
-                        
-                        <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
+                        <h1 className="partone-title">{RichText.asText(chapterData.heading)}</h1>
+                        {RichText.render(chapterData.section1)} 
                     </div>
 
                     <div className="partone-column-container">
-                        <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
-                        
-                        <p>Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio. Mauris pharetra et ultrices neque ornare aenean euismod elementum. Volutpat consequat mauris nunc congue nisi vitae suscipit. Posuere urna nec tincidunt praesent semper feugiat. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Porta non pulvinar neque laoreet suspendisse interdum consectetur. Ultrices dui sapien eget mi proin sed. Purus non enim praesent elementum facilisis. Aliquam malesuada bibendum arcu vitae elementum curabitur vitae. </p>
+                        {RichText.render(chapterData.section2)} 
                     </div>
                 </div>
             </div>
