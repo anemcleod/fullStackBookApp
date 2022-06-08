@@ -79,31 +79,31 @@ const PartOne = ({setOffsetY, offsetY, setChapter}) => {
                     ref={backgroundContainer}
                     style={{
                         width: `${fix.current ? 100+zoom : 100}%`
-                    }}>
-
-                   
-                        <HalongBay></HalongBay>
-                      
-                   
-                        <div 
-                            className="partone-mountain-left" 
-                            style={{
-                                width: `${80+zoom}%`,
-                                left: `${50+zoom}%`,
-                                bottom: `${mountainLeftBase-zoom}%`
-                        }}>
-                            <MountainLeft/>
-                        </div>
-              
-                        <div
-                            className="partone-mountain-right" 
-                            style={{
-                                width: `${80+zoom}%`,
-                                right: `${45+zoom}%`,
-                                bottom: `${mountainRightBase-zoom}%`
-                        }}>
-                            <MountainRight/>
-                        </div>
+                    }}
+                >
+   
+                    <HalongBay/>   
+                    <div 
+                        className="partone-mountain-left" 
+                        style={{
+                            width: `${80+zoom}%`,
+                            left: `${50+zoom}%`,
+                            bottom: `${mountainLeftBase-zoom}%`
+                        }}
+                    >
+                        <MountainLeft/>
+                    </div>
+            
+                    <div
+                        className="partone-mountain-right" 
+                        style={{
+                            width: `${80+zoom}%`,
+                            right: `${45+zoom}%`,
+                            bottom: `${mountainRightBase-zoom}%`
+                        }}
+                    >
+                        <MountainRight/>
+                    </div>
                  
                 </div>
 

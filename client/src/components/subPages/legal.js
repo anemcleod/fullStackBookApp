@@ -9,8 +9,7 @@ const Legal = () => {
       <div className="legal-container">
           <div className="legal-background">
             <HalongBay alt="ha long bay"/>
-          </div>
-            
+          </div> 
             <div className="legal-content-container">
                 <div className="legal-content">
                     <h1>Terms and conditions</h1>

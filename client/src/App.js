@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import './App.css';
 import Legal from './components/subPages/legal';
 import PaymentSuccess from './components/subPages/paymentSuccess';
 import PaymentFailure from './components/subPages/paymentFailure';
@@ -9,7 +8,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fab);
-
 
 function App() {
   return (

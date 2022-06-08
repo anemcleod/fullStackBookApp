@@ -5,10 +5,11 @@ import axios from "axios"
 import CARD_OPTIONS from './paymentHelpers/cardOptions'
 
 const PaymentForm = (props) => {
-
+    //stripe
     const stripe = useStripe()
     const elements = useElements()
 
+    //on submit attempt stripe payment
     const handleSubmit = async (e) => {
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
@@ -29,7 +30,6 @@ const PaymentForm = (props) => {
                 });
 
                 if(response) {
-                    console.log(response);
                     if(response.data.success){
                         props.history.push({
                             pathname: "/payment_success",

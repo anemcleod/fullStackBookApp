@@ -17,16 +17,16 @@ const Story = () => {
     const Client = Prismic.client(apiEndpoint, { accessToken });
   
     useEffect(() => {
-    const fetchData = async () => {
-        const book = await Client.query( Prismic.Predicates.at('document.type', 'train'));
-        if (book) {
-          let images = book.results[0].data;
-          setChapterImages({
-            time: images.timestamp.url,
-        });
-          setTimeout(() => {
-            setChapter(1);}, 5000);
-        }
+      const fetchData = async () => {
+          const book = await Client.query( Prismic.Predicates.at('document.type', 'train'));
+          if (book) {
+            let images = book.results[0].data;
+            setChapterImages({
+              time: images.timestamp.url,
+          });
+            setTimeout(() => {
+              setChapter(1);}, 5000);
+          }
       }
       fetchData();
     }, []);
@@ -70,8 +70,6 @@ const Story = () => {
             setChapter={setChapter}/>
           )
         }
-        
-
         </>
     )
 }
